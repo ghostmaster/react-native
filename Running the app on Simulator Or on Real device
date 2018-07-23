@@ -1,0 +1,30 @@
+If you want to run the app on android simulator, please follow below instructions:
+
+- Download JAVA and install it
+- Set the environment variables for jdk in systems variable as JAVA_HOME = jdk path
+- Download Android studio and install it
+- while starting the android studio, be careful, it will ask for some checkboxes, there is one with simulator please check that checkbox
+- After starting open the project which we ejected in react-native app project earlier
+- There is android named folder, open that in android studio
+- Build that, if it build successfully then its OK, otherwise it may give some dependency errors, so download those dependency one by one ti
+  errors are gone.
+- Once build successfully, go to Tools => AVD manager => run a device simulator (Iphone will not work it will only work in MAC)
+- Then go to command prompt and navigate to your react native project.
+- run the command => npm run android
+- If everything is right then it will build the app and start in simulator automatically.
+- if you find the adb not found error then please follow below link to fix it.
+adb stands for “Android Debug Bridge” (https://developer.android.com/studio/command-line/ adb.html)
+
+Windows: https://stackoverﬂow.com/questions/20564514/adb-is-not-recognized-asan-internal-or-external-command-operable-program-or
+
+MAC / LINUX:  https://stackoverﬂow.com/questions/10303639/adb-command-not-found
+
+To run the App on Read Android device:
+
+- Follow all the points mentioned above and please dont start the simulator.
+- connect the android phone via usb with the system
+- Please ensure USB debugging is ON in the mobile
+- When you run the command npm run android you will be able to see the app on your phone.
+
+HAPPY CODING :)
+
