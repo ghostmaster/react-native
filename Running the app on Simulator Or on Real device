@@ -28,5 +28,11 @@ To run the App on Read Android device:
 - Please ensure USB debugging is ON in the mobile
 - When you run the command npm run android you will be able to see the app on your phone.
 
+If you get spawn on running npm run andorid, then please follow these steps:
+
+- Start two terminals under same project
+- on first terminal run the command npm run start PORT=8081
+- After graph loading done, the run the command in second terminal npm run android
+
 HAPPY CODING :)
 
