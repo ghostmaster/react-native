@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jul 24 19:49:55 IST 2018
+#Wed Jul 25 19:20:51 IST 2018
 23.set=NATIVE_RESOURCE
 2.base=E\:\\react native\\basicapplication\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 15.set=NATIVE_RESOURCE
