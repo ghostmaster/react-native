@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import ListItem from './src/component/Listitem/ListItem';
 import PlaceInput from './src/component/PlaceInput/PlaceInput';
+import PlaceList from './src/component/PlaceList/PlaceList';
 
 export default class App extends React.Component {
   state ={
@@ -34,12 +35,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    const places = this.state.places.map((place, index) => {
-      return <ListItem 
-      key={index} 
-      placeName={place} 
-      onItemPressed={() => this.onItemDeleted(index)}/>;
-    });
     return (
       <View style={styles.container}>
         <PlaceInput 
@@ -47,9 +42,10 @@ export default class App extends React.Component {
         placeNameChangeHandler={this.placeNameChangeHandler}
         placeSubmitHandler={this.placeSubmitHandler}
          />
-        <ScrollView style={styles.listContainer}>
-         {places}
-        </ScrollView>
+        <PlaceList 
+        places={this.state.places} 
+        onItemDeleted={this.onItemDeleted}
+        />
       </View>
     );
   }
