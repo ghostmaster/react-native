@@ -7,10 +7,10 @@ const PlaceList = props => {
         return (
             <ListItem
                 key={index}
-                placeName={place.value}
+                placeName={place.placeName}
                 placeImage={place.image}
                 placeImageFromWeb={place.imageFromWeb}
-                onItemPressed={() => props.onItemDeleted(index)}
+                onItemPressed={() => props.onItemSelected(index)}
             />
         );
     });

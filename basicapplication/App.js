@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import PlaceInput from './src/component/PlaceInput/PlaceInput';
 import PlaceList from './src/component/PlaceList/PlaceList';
 import placeImage from './src/assets/boats.jpg';
-
+import PlaceDetail from './src/component/PlaceDetail/PlaceDetail';
 export default class App extends React.Component {
     state = {
         placeName: '',
-        places: []
+        places: [],
+        selectedPlace: null
     };
 
     placeNameChangeHandler = val => {
@@ -23,7 +24,8 @@ export default class App extends React.Component {
         this.setState(prevState => {
             return {
                 places: prevState.places.concat({
-                    value: prevState.placeName,
+                    placeName: prevState.placeName,
+                    key: Math.random(),
                     image: placeImage,
                     imageFromWeb: {
                         uri:
@@ -33,23 +35,43 @@ export default class App extends React.Component {
             };
         });
     };
-    onItemDeleted = id => {
+    placeSelectedHandler = key => {
         this.setState(prevState => {
             return {
-                places: prevState.places.filter((place, index) => id !== index)
+                selectedPlace: prevState.places.find(place => place.key === key)
             };
+        });
+    };
+
+    onItemDeletedHandler = () => {
+        this.setState(prevState => {
+            return {
+                places: prevState.places.filter(place => place.key !== prevState.selectedPlace.key),
+                selectedPlace: null
+            };
+        });
+    };
+
+    onModalCloseHandler = () => {
+        this.setState({
+            selectedPlace: null
         });
     };
 
     render() {
         return (
             <View style={styles.container}>
+                <PlaceDetail
+                    selectedPlace={this.state.selectedPlace}
+                    onItemDeletedHandler={this.onItemDeletedHandler}
+                    onModalCloseHandler={this.onModalCloseHandler}
+                />
                 <PlaceInput
                     placeName={this.state.placeName}
                     placeNameChangeHandler={this.placeNameChangeHandler}
                     placeSubmitHandler={this.placeSubmitHandler}
                 />
-                <PlaceList places={this.state.places} onItemDeleted={this.onItemDeleted} />
+                <PlaceList places={this.state.places} onItemSelected={this.placeSelectedHandler} />
             </View>
         );
     }
